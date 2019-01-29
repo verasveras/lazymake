@@ -1,0 +1,11 @@
+{
+  "name": "lazymake",
+  "version": "1.0.0",
+  "description": "A CLI tool for running make file targets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

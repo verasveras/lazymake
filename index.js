@@ -1,5 +1,6 @@
-const parser = require("@kba/makefile-parser");
 const fs = require("fs");
+const exec = require("child_process").exec;
+const parser = require("@kba/makefile-parser");
 const cliSelect = require("cli-select");
 const chalk = require("chalk");
 
@@ -29,6 +30,15 @@ const options = {
   }
 };
 
-cliSelect(options).then(() => {
-  console.log("wow!!!");
+console.log("Select a makefile target to run");
+cliSelect(options).then(response => {
+  const { value } = response;
+  exec(`make ${value}`, (err, stdout, stderr) => {
+    if (err) {
+      console.error(`exec error: ${err}`);
+      return;
+    } else {
+      console.log(stdout);
+    }
+  });
 });
